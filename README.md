@@ -4,20 +4,6 @@
 
 ---
 
-## Table of Contents
-
-- [Features](#features)  
-- [System Requirements](#system-requirements)  
-- [Installation](#installation)  
-  - [Clone the Repository](#clone-the-repository)  
-  - [Python Dependencies](#python-dependencies)  
-- [Database Setup](#database-setup)  
-- [Data Processing & Indexing](#data-processing--indexing)  
-- [Running Query Algorithms](#running-query-algorithms)  
-- [Contributing](#contributing)  
-- [License](#license)  
-
----
 
 ## Features
 
