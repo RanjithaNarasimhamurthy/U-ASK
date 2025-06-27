@@ -41,10 +41,7 @@ Traditional spatial databases excel at proximity queries, but struggle to incorp
 ## Core Algorithms
 
 1. **POWER (POint-weighted wEighted Ranking)**  
-   - **Goal**: Return top-k points that maximize  
-     \[
-       \alpha \times \bigl(1 - \tfrac{\mathrm{dist}(q, p)}{\max\_dist}\bigr) \;+\; (1 - \alpha) \times \mathrm{TextScore}(q, p)
-     \]  
+   - **Goal**: Return top-k points that maximize   
    - Uses dual-priority queues—one for spatial nearest candidates, one for high keyword relevance—and interleaves expansions until the top-k threshold is guaranteed.
 
 2. **Boolean Range Queries**  
@@ -120,6 +117,7 @@ cd u-ask
 Install required packages:
 
 pip install psycopg2-binary geopy scikit-learn numpy concurrent.futures streamlit opensearch-py pandas
+
 If you need PostGIS:
 
 CREATE EXTENSION IF NOT EXISTS postgis;
@@ -128,39 +126,52 @@ CREATE EXTENSION IF NOT EXISTS postgis;
 Create & Connect to Database
 
 CREATE DATABASE tweet_data;
+
 \c tweet_data
+
 Enable PostGIS
 
 CREATE EXTENSION IF NOT EXISTS postgis;
 ## Create tweets Table
 
 CREATE TABLE tweets (
+
   tweet_id        BIGINT PRIMARY KEY,
+  
   latitude        DOUBLE PRECISION,
+  
   longitude       DOUBLE PRECISION,
   keywords        TEXT[],
+  
   keyword_weights FLOAT[]
 );
 ## Data Processing & Indexing
 Process Raw Tweets
 
 python process_tweets.py
+
 Clean Processed Tweets
 
 python clean.py
+
 Index to OpenSearch
 
 python teq_indexing.py
+
 Load into PostgreSQL
 
 python load_indexed_data.py
+
 Running Query Algorithms
+
 POWER Algorithm (Top-k Spatial-Textual Queries)
 
 python power_algorithm.py
+
 Boolean Range Queries
 
 python power_boolean_range.py
+
 RCA Algorithm
 
 python rca_algorithm.py
