@@ -109,7 +109,7 @@ Traditional spatial databases excel at proximity queries, but struggle to incorp
 ### Clone the Repository
 
 
-git clone https://github.com/RanjithaNarasimhamurthy/U-ASK
+git clone https://github.com/RanjithaNarasimhamurthy/U-ASK.git
 
 cd u-ask
 
